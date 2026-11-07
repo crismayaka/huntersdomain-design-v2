@@ -591,10 +591,10 @@ input:disabled, select:disabled {
 .steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
 .steps li {
   counter-increment: step;
-  display: grid;
-  grid-template-columns: 1.5rem minmax(0, 1fr);
-  gap: var(--space-2xs);
+  display: block;
+  position: relative;
   padding-block: var(--space-2xs);
+  padding-inline-start: calc(1.5rem + var(--space-2xs));
   border-block-start: var(--rule) solid var(--color-rule);
   font-size: var(--text-small);
   line-height: 1.5;
@@ -602,6 +602,9 @@ input:disabled, select:disabled {
 .steps li:last-child { border-block-end: var(--rule) solid var(--color-rule); }
 .steps li::before {
   content: counter(step, decimal-leading-zero);
+  position: absolute;
+  inset-block-start: var(--space-2xs);
+  inset-inline-start: 0;
   font-family: var(--font-data);
   font-size: var(--text-micro);
   line-height: 1.7;
