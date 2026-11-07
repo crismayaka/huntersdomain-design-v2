@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hunters Domain — V2 design review (12 pages)</title>
+<meta name="description" content="The twelve V2 design pages, published for team review. These are review copies, not production routes.">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../tokens.css">
+<style>
+  /* Index only. The pages themselves are the design set and carry their own shared blocks.css. */
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.5;
+  }
+  .wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: var(--space-2xl) var(--space-md) var(--space-3xl);
+  }
+  .eyebrow {
+    margin: 0 0 var(--space-xs);
+    font-family: var(--font-data);
+    font-size: var(--text-micro);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+  h1 {
+    margin: 0 0 var(--space-sm);
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .lede {
+    margin: 0 0 var(--space-md);
+    max-width: 54ch;
+    font-size: var(--text-lede);
+    color: var(--color-ink-2);
+    text-wrap: pretty;
+  }
+  .note {
+    margin: 0 0 var(--space-xl);
+    padding: var(--space-sm) var(--space-md);
+    border-inline-start: var(--rule) solid var(--color-accent);
+    background: var(--color-paper-2);
+    font-size: var(--text-small);
+    color: var(--color-ink-2);
+  }
+  .note code { font-family: var(--font-data); font-size: var(--text-data); }
+  ol.pages { margin: 0; padding: 0; list-style: none; counter-reset: page; }
+  ol.pages li {
+    counter-increment: page;
+    display: grid;
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+    gap: var(--space-2xs);
+    padding-block: var(--space-xs);
+    border-block-start: var(--rule) solid var(--color-rule);
+  }
+  ol.pages li:last-child { border-block-end: var(--rule) solid var(--color-rule); }
+  ol.pages li::before {
+    content: counter(page, decimal-leading-zero);
+    font-family: var(--font-data);
+    font-size: var(--text-micro);
+    line-height: 1.8;
+    color: var(--color-ink-3);
+  }
+  ol.pages a {
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration-color: var(--color-rule-strong);
+    text-underline-offset: 0.15em;
+  }
+  ol.pages a:hover { text-decoration-color: var(--color-accent); }
+  ol.pages p { margin: var(--space-3xs) 0 0; font-size: var(--text-small); color: var(--color-ink-2); }
+  footer {
+    margin-block-start: var(--space-xl);
+    font-family: var(--font-data);
+    font-size: var(--text-micro);
+    color: var(--color-ink-3);
+  }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Design set v2 · for review · 2026-11-07</p>
+  <h1>Twelve pages, one design system</h1>
+  <p class="lede">V2 of the site, published so the team can read it in a real browser instead of from disk. Every page shares one token file and one block stylesheet. Prices, counts and timestamps show the inventory feed's shape, not live figures.</p>
+
+  <p class="note">
+    <b>These are review copies.</b> Routes inside them point at the file that stands in for the route, so a click stays in this folder.
+    Anything the design has not decided yet is marked as a gap — <code>F2</code> fee, <code>F4</code> CPW dates, <code>F6</code> verification date.
+    They are not production routes and nothing here is wired to the inventory feed.
+  </p>
+
+  <ol class="pages">
+    <li>
+      <a href="v2-home.html">Home</a>
+      <p>Unit lookup, season ladder, ledger preview, supply pitch, unit index, who answers.</p>
+    </li>
+    <li>
+      <a href="v2-state-hub.html">State hub — Colorado</a>
+      <p>Counts and prices fixed to the state, with the four-unit ledger and the season ladder.</p>
+    </li>
+    <li>
+      <a href="v2-state-hub-new-mexico.html">State hub — New Mexico</a>
+      <p>Same block set, different market: E-Plus ranch tags rather than vouchers.</p>
+    </li>
+    <li>
+      <a href="v2-state-hub-nevada.html">State hub — Nevada</a>
+      <p>The empty state doing the selling — demand recorded, nothing verified yet.</p>
+    </li>
+    <li>
+      <a href="v2-state-hub-utah.html">State hub — Utah</a>
+      <p>Same blocks again; the page where the ledger has least to show.</p>
+    </li>
+    <li>
+      <a href="v2-unit-guide.html">Unit guide</a>
+      <p>One unit, one page: season, odds with their source, verified tags, the three routes in.</p>
+    </li>
+    <li>
+      <a href="v2-get-tags.html">Get a tag — the ledger</a>
+      <p>Seven verified tags, cheapest first, each row naming its check and its timestamp.</p>
+    </li>
+    <li>
+      <a href="v2-listing-index.html">Listings index</a>
+      <p>Everything listed, grouped, with the verification state carried on each line.</p>
+    </li>
+    <li>
+      <a href="v2-outfitter-listing.html">Outfitter listing</a>
+      <p>A guide service listing: what is included, what is not, and who holds the tag.</p>
+    </li>
+    <li>
+      <a href="v2-reserve.html">Reserve</a>
+      <p>The four-step escrow path rendered at full length, with the fee sentence still pending (F2).</p>
+    </li>
+    <li>
+      <a href="v2-sell-tags.html">Sell a tag — landowner</a>
+      <p>The rancher pitch with per-unit demand evidence, and what connecting to the feed would take.</p>
+    </li>
+    <li>
+      <a href="v2-sell-tags-demo.html">Sell a tag — demo</a>
+      <p>The same pitch after the feed is connected, so the difference is visible side by side.</p>
+    </li>
+  </ol>
+
+  <footer>
+    V1 (/design.html) lives on the main app deployment, not this static project. · Hunters Domain · 936-287-3304
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/* Hallmark · fonts · self-hosted woff2 — no network at render time
+ * Why: the set is reviewed from disk (file://), where a fonts.googleapis.com link silently
+ * falls back and the review judges the wrong typography.
+ * Coverage: latin + latin-ext + punctuation + arrows (U+2190–21FF) + currency + ™. Fraunces is
+ * display-only and ships no arrow glyph — fine, because every '→' sits in link text, which is set
+ * in Inter or JetBrains Mono. Both carry U+2192; the cmaps were checked, not assumed.
+ * Licences: SIL Open Font License 1.1 — Fraunces, Inter, JetBrains Mono (Google Fonts).
+ * Built: subsets of the upstream variable sources, wght axis preserved.
+ */
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/fraunces.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("fonts/jetbrains-mono.woff2") format("woff2");
+}

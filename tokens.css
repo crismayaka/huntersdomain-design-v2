@@ -1,0 +1,87 @@
+/* Hallmark · tokens · Hunters Domain design system v2
+ * theme: brand-preserved (HD ink / paper / field) · paper-band: light
+ * display: Fraunces (high-contrast serif, roman only) · accent: signal red, warm
+ * families: 3 (display · body · data) · spacing: 4 pt · accent budget: ≤5 % of any viewport
+ * contrast: ink (L 23 %) on paper (L 97.5 %) ≈ 15:1 · accent on paper ≈ 5.1:1 · on accent-ink ≈ 5.1:1
+ */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────────────────── */
+  --color-paper: oklch(97.5% 0.009 90);       /* #FAF7F0 field paper */
+  --color-paper-2: oklch(95% 0.014 90);
+  --color-field: oklch(90.5% 0.026 88);       /* #E9E2D0 khaki band */
+  --color-paper-3: var(--color-field);
+  --color-ink: oklch(23% 0.008 160);          /* #1A1F1C */
+  --color-ink-2: oklch(42% 0.012 155);        /* secondary prose */
+  --color-ink-3: oklch(50% 0.012 155);        /* footnotes — still ≥4.5:1 on paper */
+  --color-ridge: oklch(48% 0.03 140);         /* #5C6B57 */
+  --color-contour: oklch(64% 0.035 130);      /* #8A9A7B */
+  --color-paper-dim: oklch(88% 0.012 90);     /* body text on ink surfaces */
+  --color-contour-on-ink: oklch(74% 0.04 130); /* ≥6:1 on ink — small print */
+
+  /* ── Rules ────────────────────────────────────────────────────────── */
+  --color-rule: oklch(86% 0.016 88);
+  --color-rule-strong: oklch(70% 0.02 88);
+  --color-rule-inverse: oklch(97.5% 0.009 90 / 0.22);
+  --rule: 1px;
+
+  /* ── Accent — money and action only ───────────────────────────────── */
+  --color-accent: oklch(52% 0.17 32);         /* #C0392B signal red */
+  --color-accent-deep: oklch(45% 0.16 32);    /* pressed / hover fill */
+  --color-accent-ink: oklch(98% 0.008 90);    /* text on accent fill */
+  --color-accent-soft: oklch(92% 0.045 32);
+
+  /* ── Status ───────────────────────────────────────────────────────── */
+  --color-ok: oklch(52% 0.1 155);
+  --color-ok-soft: oklch(94% 0.03 155);
+  --color-warn: oklch(62% 0.12 68);
+  --color-warn-soft: oklch(95% 0.045 82);
+  --color-ok-rule: oklch(80% 0.06 155);
+  --color-warn-rule: oklch(85% 0.06 82);
+  --color-info: oklch(45% 0.09 250);
+  --color-focus: oklch(45% 0.09 250);
+
+  /* ── Type ─────────────────────────────────────────────────────────── */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, monospace;
+
+  --text-display: clamp(2.5rem, 4.6vw + 1.1rem, 4rem);
+  --text-h2: clamp(1.5rem, 1.1vw + 1.2rem, 2.125rem);
+  --text-h3: 1.0625rem;
+  --text-lede: clamp(1.0625rem, 0.35vw + 0.98rem, 1.1875rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-data: 0.8125rem;
+  --text-micro: 0.6875rem;
+
+  /* ── Space — 4 pt ─────────────────────────────────────────────────── */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* ── Shape ────────────────────────────────────────────────────────── */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* ── Layout ───────────────────────────────────────────────────────── */
+  --container: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --measure: 62ch;
+  --control-h: 2.75rem;
+
+  /* ── Motion ───────────────────────────────────────────────────────── */
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ── Layers ───────────────────────────────────────────────────────── */
+  --z-nav: 300;
+}
