@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hunters Domain — V1 Page Designs (for review)</title>
+<link rel="stylesheet" href="./fonts.css">
+<style>
+:root{
+ --ink:#1A1F1C;--paper:#FAF7F0;--field:#E9E2D0;--ridge:#5C6B57;--contour:#8A9A7B;
+ --signal:#C0392B;--ok:#2E7D52;--warn:#B7791F;--info:#2F5D8A;--line:#D8D0BE;
+}
+*{box-sizing:border-box}body{margin:0;background:#111;color:#F5F1E6;font-family:Inter,system-ui,sans-serif}
+a{color:var(--info)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(17,17,17,.92);backdrop-filter:blur(8px);border-bottom:1px solid #2a2a26;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar h1{font-family:Fraunces,serif;font-size:22px;margin:0}
+.badge{display:inline-block;padding:4px 10px;border:1px solid #555;border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#D8D0BE}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;padding:12px 20px;background:#151512;position:sticky;top:62px;z-index:15;border-bottom:1px solid #2a2a26}
+.tabs button{background:transparent;color:#D8D0BE;border:1px solid #444;border-radius:999px;padding:8px 14px;cursor:pointer;font:600 13px Inter}
+.tabs button[aria-selected="true"]{background:#FAF7F0;color:#1A1F1C;border-color:#FAF7F0}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 18px 80px}
+.screen{display:none;background:var(--paper);color:var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.screen.active{display:block}
+.browser{background:#EDE8DB;padding:8px 12px;display:flex;gap:8px;align-items:center;border-bottom:1px solid var(--line);font:500 12px JetBrains Mono;color:#5C6B57}
+.dot{width:9px;height:9px;border-radius:50%;background:#C0392B}.dot:nth-child(2){background:#B7791F}.dot:nth-child(3){background:#2E7D52}
+.url{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;flex:1}
+.site-head{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line)}
+.logo{font-family:Fraunces,serif;font-weight:700;font-size:20px}.logo span{color:var(--signal)}
+.nav{display:flex;gap:14px;font-size:13px;font-weight:600;color:var(--ridge)}.nav a{color:inherit;text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px;text-decoration:none;border:1px solid transparent}
+.btn-primary{background:var(--signal);color:#fff}.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.hero{padding:28px 22px 22px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+.eyebrow{font:600 11px JetBrains Mono;letter-spacing:.12em;text-transform:uppercase;color:var(--ridge)}
+h2.hero-title{font-family:Fraunces,serif;font-size:42px;line-height:.95;margin:8px 0 12px}
+.lead{font-family:Fraunces,serif;font-size:19px;line-height:1.5;color:#333}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 8px;font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:820px){.grid3{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.mono{font-family:JetBrains Mono,monospace}
+.price{font-family:JetBrains Mono,monospace;font-weight:700;font-size:20px}
+.tag{display:inline-flex;gap:6px;align-items:center;font:600 11px Inter;padding:4px 8px;border-radius:999px;border:1px solid var(--line)}
+.ok{background:#E6F2EA;color:var(--ok);border-color:#BFDAC8}.warn{background:#FBF1D5;color:var(--warn);border-color:#E8D48A}.bad{background:#FDE8E6;color:var(--signal);border-color:#EDB9B4}
+.facts{width:100%;border-collapse:collapse;font-size:13px}.facts td,.facts th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}.facts th{color:var(--ridge);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.faq{border-top:1px solid var(--line);padding:12px 0}.faq b{font-size:14px}
+.prov{font:500 11px JetBrains Mono;color:var(--ridge);padding:10px 22px;border-top:1px solid var(--line);background:#F3EFE2}
+.section{padding:20px 22px;border-top:1px solid var(--line)}
+.section h3{font-family:Fraunces,serif;font-size:22px;margin:0 0 10px}
+.strip{display:flex;gap:10px;overflow:auto;padding-bottom:6px}.strip .card{min-width:200px}
+.rule{font-size:12px;color:var(--ridge);line-height:1.5}
+.notes{margin-top:18px;background:#1B1B18;color:#E9E2D0;border:1px solid #333;border-radius:14px;padding:16px}
+.notes h3{margin:0 0 8px;font-family:Fraunces,serif}
+.notes li{margin:6px 0;line-height:1.5}
+.footer{padding:16px 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--ridge)}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font:500 14px Inter}
+label{font:600 11px Inter;text-transform:uppercase;letter-spacing:.06em;color:var(--ridge);display:block;margin:10px 0 4px}
+.phone{font-family:JetBrains Mono;font-weight:700}
+</style>
+</head>
+<body>
+<div class="topbar"><div><h1>Hunters Domain — V1 Page Designs</h1><div style="color:#A9A48F;font-size:13px;margin-top:4px">Clean start after the hack. Top recommendations only — refine later. 5 screens · 1 file · no mockup tool needed.</div></div><span class="badge">V1 · for review · 2026-11-06</span></div>
+<nav class="tabs" role="tablist" aria-label="Page designs">
+<button role="tab" aria-selected="true" data-screen="home">1 · Home — Stage 1 Discover · Pillar A</button>
+<button role="tab" aria-selected="false" data-screen="unit">2 · Unit Guide — Stage 1-4 · Pillars A+C</button>
+<button role="tab" aria-selected="false" data-screen="state">3 · State Hub — Stage 2 Consider · Pillar A</button>
+<button role="tab" aria-selected="false" data-screen="get">4 · Get Tags — Stage 4 Act · Pillar C</button>
+<button role="tab" aria-selected="false" data-screen="sell">5 · Sell Tags — Rancher · Pillar D</button>
+<button role="tab" aria-selected="false" data-screen="unit57">6 · CO Unit 57 — Stage 5 Wait · Pillar C (live)</button>
+<button role="tab" aria-selected="false" data-screen="outfitter">7 · Outfitter — Other customer · No bridge Listing</button>
+<button role="tab" aria-selected="false" data-screen="states">8 · 404 · Kill-switch — Stage 3.5 Call · Kill-switch</button>
+<button role="tab" aria-selected="false" data-screen="pillarB">9 · B · Multi-format</button>
+<button role="tab" aria-selected="false" data-screen="pillarD">10 · D · Supply-side</button>
+<button role="tab" aria-selected="false" data-screen="pillarA">11 · A · Evergreen</button>
+<button role="tab" aria-selected="false" data-screen="pillarC">12 · C · Conversion</button>
+<button role="tab" aria-selected="false" data-screen="essay">13 · Essay</button>
+<button role="tab" aria-selected="false" data-screen="podcast">14 · Podcast</button>
+<button role="tab" aria-selected="false" data-screen="video">15 · Video</button>
+<button role="tab" aria-selected="false" data-screen="carousel">16 · Carousel</button>
+<button role="tab" aria-selected="false" data-screen="trust">17 · Trust (0.5)</button>
+<button role="tab" aria-selected="false" data-screen="call">18 · The Call (3.5)</button>
+<button role="tab" aria-selected="false" data-screen="winback">19 · Win-back (5.5)</button>
+</nav>
+<div class="wrap">
+
+<!-- HOME -->
+<section class="screen active" id="screen-home">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Get Tags</a><a>Sell Tags</a><a href="#" onclick="showScreen('trust');return false">Trust</a><a class="phone" href="tel:+19362873304" data-source="nav">936-287-3304</a></div></div>
+<div class="hero">
+<div>
+<div class="eyebrow">Hunting knowledge · Landowner tags · Since 15+ years</div>
+<h2 class="hero-title">Can you hunt<br>your unit?</h2>
+<p class="lead">Unit guides, draw odds and verified landowner tags — answered by a person who picks up the phone. No checkout. No guessing. One price, on the site and on the call.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn btn-primary" href="#" onclick="showScreen('unit');return false">Find your unit →</a> <a class="btn btn-ghost" href="#" onclick="showScreen('unit57');return false">Alert me</a><a class="btn btn-ghost" href="#" style="display:none"</a><a class="btn btn-ghost" href="#" onclick="showScreen('get');return false">Get a tag</a></div>
+<p class="rule" style="margin-top:12px">Recommended: search is unit-first, not keyword-first. The visitor picks state → species → unit. Everything else is secondary.</p>
+</div>
+<div class="card">
+<h3>Check a unit</h3>
+<label>State</label><select><option>Colorado</option><option>New Mexico</option><option>Nevada</option><option>Utah</option></select>
+<label>Species</label><select><option>Elk</option><option>Deer</option><option>Antelope</option></select>
+<label>Unit</label><input value="61">
+<button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px" onclick="showScreen('unit')">Show availability →</button>
+<p class="rule">Live from LandownerTags. If nothing is verified, we say so — and capture the alert.</p>
+</div>
+</div>
+<div class="section"><h3>Start by where you are in the season</h3><div class="grid3">
+<div class="card"><div class="eyebrow">Q1 · Draw runway</div><h3>Application Blueprints</h3><p class="rule">WY · AZ · NM deadlines. Odds, points, strategy.</p></div>
+<div class="card"><div class="eyebrow">Q2 · Results drop</div><h3>Struck out?</h3><p class="rule">CO · UT · NV results. The Plan B is a verified landowner tag.</p></div>
+<div class="card"><div class="eyebrow">Q3 · Peak vouchers</div><h3>Tags for sale</h3><p class="rule">Live inventory by unit, with a real price.</p></div>
+</div></div>
+<div class="prov">season 2026 · last verified 2026-10-26 · by [named author] · sources: CPW, NM DGF, county data</div>
+<div class="prov">season 2026 · last verified 2026-10-26 · by [named author] · sources: CPW, NM DGF</div><div class="prov">Stage 0.5 Trust · Pillar A Evergreen · season 2026 · by [named author]</div><div class="footer"><span>© Hunters Domain · One price everywhere</span><span><a href="#" onclick="showScreen('unit');return false">Unit Guide</a> · <a href="#" onclick="showScreen('get');return false">Get Tags</a> · <a href="#" onclick="showScreen('sell');return false">Sell Tags</a> · <span class="phone">936-287-3304</span> · 14 h/day</span></div>
+</section>
+
+<!-- UNIT -->
+<section class="screen" id="screen-unit">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/hunting-info/colorado-unit-61/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Get Tags</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero">
+<div>
+<div class="eyebrow">Colorado · Elk · Unit 61 · Season 2026</div>
+<h2 class="hero-title">Colorado Unit 61<br>Hunting Guide</h2>
+<p class="lead">Colorado Unit 61 is a premier elk unit with limited landowner tags. Nonresident draw odds are under 1% in most years; a landowner tag is the realistic route. As of this week, three verified tags are listed in this unit.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><span class="tag ok">● Verified</span><span class="tag">Season 2026</span><span class="tag">3 tags live</span></div>
+</div>
+<div class="card" style="border:2px solid var(--signal)">
+<div class="eyebrow" style="color:var(--signal)">Live inventory — server-rendered</div>
+<div style="display:flex;justify-content:space-between;align-items:end;margin:8px 0"><div><div class="price" data-placeholder="P0">from $4,800</div><div class="rule">3 verified tags · Elk · Unit 61</div></div><span class="tag ok">updated 4 min ago</span></div>
+<a class="btn btn-primary" href="#" style="width:100%;justify-content:center">Transferable in CO 2026 — verified ✓<br><br>Reserve on LandownerTags →</a>
+<p class="rule" style="margin-top:8px">Price is the LandownerTags price, verbatim. The phone quotes the same number.</p>
+</div>
+</div>
+<div class="section"><h3>Key facts</h3><table class="facts"><tr><th>Fact</th><th>2026</th><th>Source</th></tr>
+<tr><td>Season</td><td class="mono">Oct 11–15 · Oct 25–Nov 8</td><td>CPW brochure</td></tr>
+<tr><td>Nonresident odds</td><td class="mono">0.8%</td><td>CPW draw recap</td></tr>
+<tr><td>Landowner tags available</td><td class="mono">3</td><td>Live — LandownerTags</td></tr>
+<tr><td>Verification</td><td>Staff-checked</td><td>verification_mode</td></tr></table></div>
+<div class="section"><h3>Three routes to a tag</h3><div class="grid3">
+<div class="card"><h3>Draw</h3><p class="rule">Cost: $1,187 · Certainty: &lt;1% · Timing: apply by June</p></div>
+<div class="card"><h3>Landowner tag</h3><p class="rule">Cost: from $4,800 · Certainty: high · Timing: now</p></div>
+<div class="card"><h3>Outfitter</h3><p class="rule">Cost: $7k–$12k · Certainty: high · Timing: book early</p></div>
+</div></div>
+<div class="section"><h3>No tag in your unit?</h3><div class="card"><p><b>43 hunters searched Unit 61 last week.</b> Nothing verified is listed — yours would be the only one.</p><div class="grid2"><div><label>Email</label><label class="rule" for="alert-email">Email</label><input id="alert-email" type="email" placeholder="you@email.com" autocomplete="email"></div><div><label>&nbsp;</label><button class="btn btn-primary" style="width:100%;justify-content:center">Tell me when one is listed</button></div></div></div></div>
+<div class="section"><h3>FAQ</h3><div class="faq"><b>Can I buy a Colorado landowner tag?</b><br><span class="rule">Yes — transferable with the landowner, verified before payment is released. The tag ships after verification.</span></div><div class="faq"><b>What does it cost?</b><br><span class="rule">Published per listing. The site price and the phone price are the same number.</span></div></div>
+<div class="prov">season 2026 · last verified 2026-10-12 · by [named author] · CPW, NM DGF</div>
+</section>
+
+<!-- STATE -->
+<section class="screen" id="screen-state">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/location/colorado/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Get Tags</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero"><div><div class="eyebrow">State hub</div><h2 class="hero-title">Colorado<br>hunting units</h2><p class="lead">Every unit we can transact in, grouped by quality tier. Demand shown per unit — because that's the rancher pitch too.</p></div><div class="card"><h3>At a glance</h3><p class="rule"><b>48</b> unit pages · <b>3</b> live tags · <b>1,204</b> searches last 30 days (P0 will confirm)</p><a class="btn btn-primary" href="#" style="width:100%;justify-content:center">Get a Colorado tag →</a></div></div>
+<div class="section"><h3>Tier 1 — trophy units</h3><div class="strip">
+<div class="card"><h3>Unit 61</h3><p class="rule">Elk · 3 tags · from $4,800</p><span class="tag ok">● Live</span></div>
+<div class="card"><h3>Unit 2</h3><p class="rule">Elk · 0 tags · 41 searches</p><span class="tag warn">Demand, no supply</span></div>
+<div class="card"><h3>Unit 18</h3><p class="rule">Deer · 1 tag · from $3,200</p><span class="tag ok">● Live</span></div>
+<div class="card"><h3>Unit 54</h3><p class="rule">Elk · 0 tags · 28 searches</p><span class="tag warn">Demand, no supply</span></div>
+</div><p class="rule" style="margin-top:10px">Recommended: the "demand, no supply" card is the most valuable thing on this page. It is the only sales tool a rancher needs.</p></div>
+</section>
+
+<!-- GET -->
+<section class="screen" id="screen-get">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/get-landowner-tags/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Get Tags</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero"><div><div class="eyebrow">Get a tag</div><h2 class="hero-title">A tag, without<br>the phone tag.</h2><p class="lead">Verified landowner tags across Colorado, New Mexico, Nevada and Utah. One price, shown. Paid through escrow. The phone still works if you want it to.</p><div style="display:flex;gap:10px;margin-top:12px"><a class="btn btn-primary" href="#" onclick="showScreen('unit')">See live tags →</a><a class="btn btn-ghost" href="#">Call 936-287-3304</a></div></div>
+<div class="card"><h3>How it works</h3><p class="rule">1 · Find your unit<br>2 · Pick a verified tag<br>3 · Reserve on LandownerTags<br>4 · Escrow releases after verification<br>5 · Tag ships</p><span class="tag ok">● One fee, shown once</span></div></div>
+<div class="section"><h3>Live now</h3><div class="grid3">
+<div class="card"><h3>CO Unit 61 · Elk</h3><div class="price" data-placeholder="P0">from $4,800</div><p class="rule">3 tags · staff-verified</p><a class="btn btn-primary" href="#" onclick="showScreen('unit')" style="width:100%;justify-content:center">View →</a></div>
+<div class="card"><h3>NM Unit 16 · Elk</h3><div class="price" data-placeholder="P0">from $5,200</div><p class="rule">2 tags · staff-verified</p><a class="btn btn-primary" href="#" style="width:100%;justify-content:center">View →</a></div>
+<div class="card"><h3>CO Unit 18 · Deer</h3><div class="price" data-placeholder="P0">from $3,200</div><p class="rule">1 tag · auto-verified</p><a class="btn btn-primary" href="#" style="width:100%;justify-content:center">View →</a></div>
+</div></div>
+</section>
+
+<!-- SELL -->
+<section class="screen" id="screen-sell">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/sell-landowner-tags/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Sell Tags</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero"><div><div class="eyebrow">For landowners</div><h2 class="hero-title">Your unit had<br>43 searches last week.</h2><p class="lead">Nothing verified is listed in Unit 61. Yours would be the only one — and the only one hunters can buy with confidence.</p><div style="display:flex;gap:10px;margin-top:12px"><a class="btn btn-primary" href="#">List a tag →</a><a class="btn btn-ghost" href="#">Call 936-287-3304</a></div></div>
+<div class="card"><h3>Why list here</h3><p class="rule">• Free to list<br>• One fee, shown once<br>• Escrow holds the money until the tag is verified<br>• 14 hours a day, a person answers<br>• Demand shown per unit, with evidence</p></div></div>
+<div class="section"><h3>The pitch, with evidence</h3><div class="grid3">
+<div class="card"><h3>43</h3><p class="rule">hunters searched Unit 61 last week</p></div>
+<div class="card"><h3>0</h3><p class="rule">verified tags listed in Unit 61</p></div>
+<div class="card"><h3>1</h3><p class="rule">rancher who lists first takes the unit</p></div>
+</div></div>
+<div class="section"><h3>Talk to a person</h3><div class="card"><label>Name</label><input placeholder="Your name"><label>Unit / state</label><input placeholder="CO Unit 61"><label>Phone or email</label><input placeholder="How do we reach you?"><button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px">Request a call back</button><p class="rule" style="margin-top:8px">Every request goes to <b>[named owner — F3]</b> with a same-day reply SLA. No form dumps into an unowned inbox.</p></div></div>
+</section>
+
+<!-- UNIT57 -->
+<section class="screen" id="screen-unit57">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/hunting-info/colorado-units-hunting-information/co-unit-57-hunting-info/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Get Tags</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero">
+<div>
+<div class="eyebrow">Colorado · Unit 57 · Live URL added 2026-11-06</div>
+<h2 class="hero-title">Colorado Unit 57<br>Hunting Information</h2>
+<p class="lead">Unit 57 sits in the 57/58/581 cluster — elk, deer and antelope landowner tags in the same geography. The old page was navigation-heavy and phone-first. The V1 version keeps the URL, answers first, and shows only what's verified.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><span class="tag ok">● URL preserved</span><span class="tag">CO · 57 / 58 / 581</span><span class="tag warn">P0: check impressions</span></div>
+<p class="rule" style="margin-top:10px">Why this page: it's a real, indexed unit page from the 265. If P0 shows it has impressions, it's one of the 5 template pages. If it doesn't, it's still a valid parity case.</p>
+</div>
+<div class="card" style="border:2px solid var(--warn)">
+<div class="eyebrow" style="color:var(--warn)">Bridge — empty state is the product</div>
+<p style="margin:8px 0"><b>No verified tags listed for Unit 57 right now.</b></p>
+<p class="rule">Hunters searched this unit. Ranchers in 57/58/581 hold the supply. The alert captures the demand; the phone closes it.</p>
+<div style="display:flex;gap:8px;margin-top:10px"><input placeholder="you@email.com" style="flex:1"><button class="btn btn-primary">Alert me</button></div>
+<p class="rule" style="margin-top:8px">One field. One unit. Source page recorded.</p>
+</div>
+</div>
+<div class="section"><h3>Key facts — to be sourced, not invented</h3><table class="facts"><tr><th>Fact</th><th>Value</th><th>Source</th></tr>
+<tr><td>Species</td><td class="mono">Elk · Deer · Antelope</td><td>Listing categories [read]</td></tr>
+<tr><td>Season dates</td><td class="mono">TBD — CPW brochure</td><td>Do not guess</td></tr>
+<tr><td>Draw odds</td><td class="mono">TBD — CPW recap</td><td>Do not guess</td></tr>
+<tr><td>Tags available</td><td class="mono">0 verified</td><td>Live contract</td></tr></table>
+<p class="rule" style="margin-top:8px">Rule: a fact without a source does not render. The old site said "estimated" — we don't.</p></div>
+<div class="section"><h3>Three routes</h3><div class="grid3">
+<div class="card"><h3>Draw</h3><p class="rule">Apply by June. Odds TBD from CPW.</p></div>
+<div class="card"><h3>Landowner tag</h3><p class="rule">None verified today. Alert captures demand.</p></div>
+<div class="card"><h3>Outfitter</h3><p class="rule">See /listing/ — different buyer, different page.</p></div>
+</div></div>
+<div class="section"><h3>Neighbouring units</h3><div class="strip">
+<div class="card"><h3>Unit 56</h3><p class="rule">Elk tags listed</p></div>
+<div class="card"><h3>Unit 58</h3><p class="rule">Elk / deer / antelope</p></div>
+<div class="card"><h3>Unit 581</h3><p class="rule">Deer / antelope</p></div>
+<div class="card"><h3>Unit 61</h3><p class="rule">Elk — live tags</p></div>
+</div></div>
+<div class="prov">season 2026 · last verified [TBD] · by [named author] · CPW — URL preserved exactly from live site</div>
+</section>
+<!-- OUTFITTER -->
+<section class="screen" id="screen-outfitter">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/listing/unit-150-montana-mule-deer-hunts/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a>Get Tags</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero"><div><div class="eyebrow">Outfitter listing — no tag bridge</div><h2 class="hero-title">Unit 150 Montana<br>Mule Deer Hunts</h2><p class="lead">Outfitted hunts in Unit 150. This is a different buyer from a tag buyer — so this page is a hunt detail, not a tag card.</p><span class="tag warn">● No bridge on this page type</span></div>
+<div class="card"><h3>Hunt details</h3><p class="rule">Outfitter · Unit 150 · Montana<br>Species: Mule Deer · Season: Oct–Nov<br>Price band: \$3,500–\$6,500<br>Contact: via the outfitter</p><a class="btn btn-ghost" href="#" style="width:100%;justify-content:center">Contact outfitter</a></div></div>
+<div class="prov">season 2026 · last verified [TBD] · by [named author] · outfitter-supplied, verified by phone</div>
+</section>
+<!-- STATES -->
+<section class="screen" id="screen-states">
+<div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">huntersdomain.com/this-page-moved/</span></div>
+<div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div>
+<div class="hero"><div><div class="eyebrow">404 — branded, with a way out</div><h2 class="hero-title">This page<br>moved or ended.</h2><p class="lead">The unit may have been renumbered, or the content retired. Search for your unit — or call, and a person will find it.</p><div style="display:flex;gap:8px;margin-top:12px"><input placeholder="State, species, unit" style="flex:1"><button class="btn btn-primary">Search units</button></div></div>
+<div class="card" style="border:2px solid var(--warn)"><div class="eyebrow" style="color:var(--warn)">Kill-switch state — bridge disabled</div><p style="margin:8px 0"><b>Availability is temporarily unavailable.</b></p><p class="rule">Shown when NEXT_PUBLIC_BRIDGE_ENABLED=false or the LT API is down. Never a blank card. The phone number is the fallback.</p><a class="btn btn-ghost" href="tel:+19362873304" data-source="nav" style="width:100%;justify-content:center">Call 936-287-3304</a></div></div>
+<div class="prov">Parity: every retired URL lands here or 301s. No silent 404s.</div>
+</section>
+<!-- PILLAR B --><section class="screen" id="screen-pillarB"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/hunting-info/colorado-unit-61/ — formats</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar B · Multi-format distribution</div><h2 class="hero-title">One idea,<br>four formats.</h2><p class="lead">Every unit guide ships as a page, a 2-minute audio brief, a 60-second video, and a carousel. <b>Every format links back to the page with the bridge.</b></p><span class="tag ok">● 1 source → 4 artifacts</span></div><div class="card"><h3>The rule</h3><p class="rule">Format is a field, not a page type. No bridge = no ship.</p><div class="grid2" style="margin-top:10px"><div class="card"><h3>Audio · 2:14</h3><p class="rule">Unit 61 brief</p></div><div class="card"><h3>Video · 0:58</h3><p class="rule">Map flyover</p></div></div></div></div><div class="prov">Pillar B · owner: editor · metric: reach per writing hour</div></section>
+<!-- PILLAR D --><section class="screen" id="screen-pillarD"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/sell-landowner-tags/ — supply-side</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar D · Supply-side content</div><h2 class="hero-title">Your unit had<br>43 searches last week.</h2><p class="lead">Nothing verified is listed in Unit 61. Yours would be the only one. <b>Evidence, not adjectives.</b></p><div style="display:flex;gap:10px;margin-top:12px"><a class="btn btn-primary" href="#">List a tag →</a><a class="btn btn-ghost" href="tel:+19362873304" data-source="nav">Call 936-287-3304</a></div></div><div class="card"><h3>Case study</h3><p class="rule">"We listed one tag. It sold in 11 days." — [Rancher, CO Unit 61, with consent]</p><span class="tag">Season 2025 · verified</span></div></div><div class="section"><h3>Demand by unit</h3><div class="grid3"><div class="card"><h3>Unit 61</h3><p class="rule">43 searches · 0 listed</p><span class="tag bad">● Takes the unit</span></div><div class="card"><h3>Unit 2</h3><p class="rule">41 searches · 0 listed</p><span class="tag warn">Demand, no supply</span></div><div class="card"><h3>Unit 18</h3><p class="rule">28 searches · 1 listed</p><span class="tag ok">● Live</span></div></div></div><div class="section"><h3>Talk to a person</h3><div class="card"><label>Name</label><input placeholder="Your name"><label>Phone or email</label><input placeholder="How do we reach you?"><button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px">Request a call back</button><p class="rule" style="margin-top:8px">Owner: <b>[named — F3]</b> · SLA: same-day reply.</p></div></div><div class="prov">Pillar D · owner: founder + editor · metric: listings per unit</div></section>
+<!-- PILLAR A --><section class="screen" id="screen-pillarA"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/hunting-info/ — 416 pages, one template</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar A · Evergreen authority</div><h2 class="hero-title">416 pages.<br>One template.</h2><p class="lead">265 unit guides · 143 tag-type archives · 8 state hubs. Every page: entity H1 → 40–60w answer → facts → bridge → 3 routes → FAQ → provenance.</p><span class="tag ok">● Answer-first</span></div><div class="card"><h3>Checklist</h3><p class="rule">☐ Entity H1<br>☐ Answer 40–60w<br>☐ Facts complete<br>☐ Bridge 5 states<br>☐ 3 routes<br>☐ FAQ ≥5<br>☐ Season+author<br>☐ ≥3 internal links</p></div></div><div class="section"><h3>What pillar A is not</h3><div class="grid3"><div class="card"><h3>Not 265 model pages</h3><p class="rule">Thin pages damage all layers.</p></div><div class="card"><h3>Not the 326 listings</h3><p class="rule">Outfitter hunts — different buyer.</p></div><div class="card"><h3>Not the map store</h3><p class="rule">1,702 URLs — migration decision.</p></div></div></div><div class="prov">Pillar A · owner: writer + editor · metric: impressions by pattern</div></section>
+<!-- PILLAR C --><section class="screen" id="screen-pillarC"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/hunting-info/colorado-unit-61/ — bridge</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar C · Contextual conversion</div><h2 class="hero-title">The bridge,<br>not the ad.</h2><p class="lead">Live inventory inside the answer. Server-rendered, 5 states, price verbatim. <b>No banner ads.</b></p></div><div class="card" style="border:2px solid var(--signal)"><div class="eyebrow" style="color:var(--signal)">Live — 5 states</div><p class="rule" style="margin-top:8px">Available · None · Unavailable · Not covered · Stale</p><div class="price" data-placeholder="P0">from $4,800</div><p class="rule">3 verified tags · updated 4 min ago</p><a class="btn btn-primary" href="#" style="width:100%;justify-content:center;margin-top:8px">Reserve →</a></div></div><div class="section"><h3>Hard rules</h3><div class="grid3"><div class="card"><h3>Never blank</h3><p class="rule">Empty = alert capture.</p></div><div class="card"><h3>Never fake</h3><p class="rule">No count without data.</p></div><div class="card"><h3>Never drift</h3><p class="rule">Price verbatim. Phone = same number.</p></div></div></div><div class="prov">Pillar C · owner: dev + editor · metric: content→listing CTR ≥ 4%</div></section>
+<!-- ESSAY --><section class="screen" id="screen-essay"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/hunting-info/colorado-unit-61/ — essay</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar A · Essay — Stage 1 Discover — the source</div><h2 class="hero-title">Colorado Unit 61:<br>odds under 1%.</h2><p class="lead">Colorado Unit 61 is a premier elk unit. Nonresident draw odds are under 1% in most years; a landowner tag is the realistic route. Three verified tags are listed this week.</p><span class="tag ok">● Answer lead 52 words</span></div><div class="card"><h3>Facts</h3><table class="facts"><tr><th>Fact</th><th>2026</th></tr><tr><td>Odds</td><td class="mono">0.8%</td></tr><tr><td>Tags</td><td class="mono">3 live</td></tr><tr><td>Price</td><td class="mono">from $4,800</td></tr><tr><td>Verified</td><td>Staff</td></tr></table></div></div><div class="section"><h3>Three routes</h3><div class="grid3"><div class="card"><h3>Draw</h3><p class="rule">$1,187 · &lt;1% · apply by June</p></div><div class="card"><h3>Landowner</h3><p class="rule">from $4,800 · high · now</p></div><div class="card"><h3>Outfitter</h3><p class="rule">$7k–$12k · high · book early</p></div></div></div><div class="prov">Pillar A · Essay — Stage 1 Discover · owner: writer · metric: impressions · This page is the source for podcast/video/carousel</div></section>
+<!-- PODCAST --><section class="screen" id="screen-podcast"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/podcast/unit-61-in-2-minutes/</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Podcast</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar B · Podcast — Stage 3 Decide — 2:14</div><h2 class="hero-title">Unit 61<br>in 2 minutes.</h2><p class="lead">"Odds under 1%. Three tags listed. From \$4,800. Here's the Plan B if you didn't draw."</p><div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-primary">▶ Play 2:14</button><button class="btn btn-ghost">Transcript</button></div></div><div class="card"><h3>Show notes</h3><p class="rule">1) The odds (0:12)<br>2) The tags (0:47)<br>3) The verification (1:20)<br>4) The phone number (1:58)</p><a class="btn btn-ghost" href="#" style="width:100%;justify-content:center;margin-top:8px">→ Unit 61 page with bridge</a></div></div><div class="section"><h3>Transcript (liftable)</h3><p class="rule">"Colorado Unit 61 — nonresident odds are under one percent. Three verified landowner tags are listed this week, from forty-eight hundred dollars. Every tag is staff-checked before payment is released. Link in the notes if you want to see them."</p></div><div class="prov">Pillar B · Podcast — Stage 3 Decide · owner: editor · metric: reach per writing hour · Bridge: show notes → unit page</div></section>
+<!-- VIDEO --><section class="screen" id="screen-video"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">Shorts / Reels — 0:58 vertical</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Video</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar B · Short video — 0:58</div><h2 class="hero-title">You didn't draw.<br>Here's the other way in.</h2><p class="lead">Topo flyover of Unit 61. Odds graphic. Tag price. Captions on — most watch muted.</p><span class="tag">Captions: ON · 9:16 vertical</span></div><div class="card" style="text-align:center;padding:28px"><div style="font-size:44px">▶</div><p class="rule">Pinned comment:<br>"3 verified tags in Unit 61 — link in bio"</p><a class="btn btn-primary" href="#" style="width:100%;justify-content:center;margin-top:8px">→ Unit 61 page</a></div></div><div class="section"><h3>Shot list</h3><div class="grid3"><div class="card"><h3>0–10s</h3><p class="rule">Map flyover — Unit 61</p></div><div class="card"><h3>10–30s</h3><p class="rule">Odds graphic — 0.8%</p></div><div class="card"><h3>30–58s</h3><p class="rule">Price + verified + CTA</p></div></div></div><div class="prov">Pillar B · Video — Stage 3 Decide · owner: editor · metric: swipe-through to unit page</div></section>
+<!-- CAROUSEL --><section class="screen" id="screen-carousel"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">Instagram / Facebook — 5 slides</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Social</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Pillar B · Social carousel — 5 slides</div><h2 class="hero-title">Unit 61 in<br>5 slides.</h2><p class="lead">One fact per slide. Last slide is the bridge CTA. Swipe-through is the metric.</p></div><div class="card"><h3>Slides</h3><p class="rule">1 — Odds: 0.8%<br>2 — 3 tags listed<br>3 — From $4,800<br>4 — Staff-verified<br>5 — Reserve → (CTA)</p></div></div><div class="section"><h3>Slide previews</h3><div class="strip"><div class="card"><h3>1/5</h3><p class="rule">Odds: 0.8%</p></div><div class="card"><h3>2/5</h3><p class="rule">3 tags listed</p></div><div class="card"><h3>3/5</h3><p class="rule">From $4,800</p></div><div class="card"><h3>4/5</h3><p class="rule">Staff-verified</p></div><div class="card" style="border:2px solid var(--signal)"><h3>5/5</h3><p class="rule">Transferable in CO 2026 — verified ✓<br><br>Reserve on LandownerTags →</p></div></div></div><div class="prov">Pillar B · Carousel — Stage 2 Consider · owner: editor · metric: swipe-through · Bridge: last slide → unit page</div></section>
+<!-- TRUST --><section class="screen" id="screen-trust"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">/ — Stage 0.5 Trust repair</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Stage 0.5 · Trust repair — after the hack</div><h2 class="hero-title">We're back.<br>Here's who's behind this.</h2><p class="lead">Named author. A phone that gets answered. A provenance strip on every page. No anonymous checkout, no hidden fees.</p><span class="tag ok">● Named human · ● Phone 14h/day · ● Provenance on every page</span></div><div class="card"><h3>Who answers</h3><p class="rule">[Name] — [bio]<br>936-287-3304 · 14 hours a day<br>Every page: season · author · date · sources</p></div></div><div class="prov">Stage 0.5 · Trust repair · owner: founder · metric: return rate of blocked visitors</div></section>
+<!-- CALL --><section class="screen" id="screen-call"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">Phone — Stage 3.5</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Stage 3.5 · The call — mapped, not an exit</div><h2 class="hero-title">The call is<br>a stage, not an exit.</h2><p class="lead">Operator opens the listing record first. Quotes the site price. Writes status before confirmation. Holds expire. End-of-day reconciliation.</p><span class="tag warn">● Two clocks, one tag — contained by rule</span></div><div class="card"><h3>On the call</h3><p class="rule">1 · Open the record<br>2 · Same price as site<br>3 · Write status first<br>4 · Hold = expiry<br>5 · Reconcile EOD</p></div></div><div class="section"><h3>If the site is down</h3><div class="card"><p class="rule">Bridge disabled → "Availability is temporarily unavailable" → phone number. Never a blank card.</p></div></div><div class="prov">Stage 3.5 · The call · owner: operator · metric: attributed calls (source captured)</div></section>
+<!-- WINBACK --><section class="screen" id="screen-winback"><div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">Email — Stage 5.5 Win-back</span></div><div class="site-head"><div class="logo">Hunters<span>Domain</span></div><div class="nav"><a>Unit Guides</a><a class="phone">936-287-3304</a></div></div><div class="hero"><div><div class="eyebrow">Stage 5.5 · Didn't buy this season</div><h2 class="hero-title">Not this season?<br>We'll tell you next.</h2><p class="lead">You searched Unit 61. Nothing was listed. We recorded it. When a tag appears — or when the season opens — you hear first.</p><span class="tag ok">● Owned channel — not rented reach</span></div><div class="card"><h3>Season digest</h3><p class="rule">Subject: "Unit 61 — 2 tags listed for 2027"<br>Body: demand, price, verify, reserve.<br>One unit. One price. One tap.</p><a class="btn btn-primary" href="#" style="width:100%;justify-content:center;margin-top:8px">See Unit 61 →</a></div></div><div class="prov">Stage 5.5 · Win-back · owner: editor · metric: repeat purchase rate · churn = didn't buy</div></section>
+<div class="notes">
+<h3>V0.1 frozen — next iteration is Next.js components, not this file</h3><p class="rule" style="color:#A9A48F">This mockup has done its job. Follow-ups 1–9 are applied below; the build version lives in <code>src/components/</code>, not here.</p><h3>What to refine later (not now)</h3>
+<ul>
+<li><b>Home:</b> unit-first search + season strip. The 3 season cards drive the editorial calendar.</li>
+<li><b>Unit guide:</b> answer lead → bridge → facts → routes → FAQ → provenance. Bridge <i>above</i> long content.</li>
+<li><b>State hub:</b> the "demand, no supply" card is the supply pitch. Keep it prominent.</li>
+<li><b>Get:</b> one price, one CTA, live list. No checkout here — handoff only.</li>
+<li><b>Sell:</b> evidence, not adjectives. The numbers do the selling.</li>
+<li><b>Global:</b> topo-contour texture only · signal red only for money · mono for data · no purple, no gradients.</li>
+</ul>
+</div>
+</div>
+<script>
+function showScreen(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById('screen-'+id).classList.add('active');
+ document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected', b.dataset.screen===id?'true':'false'));
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>showScreen(b.dataset.screen)));
+</script>
+</body></html>

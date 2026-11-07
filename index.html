@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hunters Domain — V2 design review (12 pages)</title>
-<meta name="description" content="The twelve V2 design pages, published for team review. These are review copies, not production routes.">
+<title>Hunters Domain — design review: V2 (twelve pages) and V1</title>
+<meta name="description" content="The V2 design set, twelve pages, published for team review next to the frozen V1 page. Review copies, not production routes.">
 <meta name="color-scheme" content="light">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../tokens.css">
@@ -90,6 +90,38 @@
     color: var(--color-ink-3);
   }
   footer a { color: inherit; }
+  .versions { margin: 0 0 var(--space-xl); display: grid; gap: var(--space-sm); }
+  @media (min-width: 40em) { .versions { grid-template-columns: 1fr 1fr; } }
+  .version {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    border: var(--rule) solid var(--color-rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  a.version:hover { border-color: var(--color-accent); }
+  .version.current { background: var(--color-paper-2); }
+  .version-tag {
+    display: block;
+    font-family: var(--font-data);
+    font-size: var(--text-micro);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+  .version-name {
+    display: block;
+    margin-top: var(--space-3xs);
+    font-family: var(--font-display);
+    font-size: var(--text-h3);
+    font-weight: 600;
+  }
+  .version-desc {
+    display: block;
+    margin-top: var(--space-3xs);
+    font-size: var(--text-small);
+    color: var(--color-ink-2);
+  }
 </style>
 </head>
 <body>
@@ -104,6 +136,19 @@
     Anything the design has not decided yet is marked as a gap — <code>F2</code> fee, <code>F4</code> CPW dates, <code>F6</code> verification date.
     They are not production routes and nothing here is wired to the inventory feed.
   </p>
+
+  <div class="versions">
+    <a class="version" href="v1.html">
+      <span class="version-tag">V1 · frozen</span>
+      <span class="version-name">One long page</span>
+      <span class="version-desc">Today&rsquo;s design, published whole and unchanged for this review. Compare it against the twelve below.</span>
+    </a>
+    <div class="version current">
+      <span class="version-tag">V2 · twelve pages</span>
+      <span class="version-name">The set below</span>
+      <span class="version-desc">Re-cut onto one token file and one block stylesheet. Undecided items are marked as gaps.</span>
+    </div>
+  </div>
 
   <ol class="pages">
     <li>
@@ -157,7 +202,7 @@
   </ol>
 
   <footer>
-    V1 (/design.html) lives on the main app deployment, not this static project. · Hunters Domain · 936-287-3304
+    V1 is <a href="v1.html">here too</a>, frozen at the revision the app deployment carries. · Hunters Domain · 936-287-3304
   </footer>
 
 </div>
